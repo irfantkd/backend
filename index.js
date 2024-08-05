@@ -294,22 +294,23 @@ app.post("/user/verify", async (req, res) => {
 //     app.listen(port, () => console.log("server & db is up..."));
 // })
 
-// mongoose.connect(process.env.MDB_SERVER_URL).then(() => {
-//     app.listen(port, () => console.log("server & db is up..."));
-// })
+mongoose.connect(process.env.MDB_SERVER_URL).then(() => {
+    app.listen(port, () => console.log("server & db is up..."));
+})
+
 // mongoose.connect(process.env.MONGO_DB_URL).then(() => {
 //     app.listen(port, () => console.log("server & db is up..."));
 // });
 
-const mongoUri = process.env.MDB_SERVER_URL;
-if (!mongoUri) {
-    throw new Error('MDB_SERVER_URL is not defined in environment variables');
-}
+// const mongoUri = process.env.MDB_SERVER_URL;
+// if (!mongoUri) {
+//     throw new Error('MDB_SERVER_URL is not defined in environment variables');
+// }
 
-mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => {
-        app.listen(port, () => console.log("Server & DB are up..."));
-    })
-    .catch((err) => {
-        console.error('Error connecting to MongoDB:', err);
-    });
+// mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
+//     .then(() => {
+//         app.listen(port, () => console.log("Server & DB are up..."));
+//     })
+//     .catch((err) => {
+//         console.error('Error connecting to MongoDB:', err);
+//     });
